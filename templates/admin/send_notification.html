@@ -1,0 +1,1759 @@
+{#{% extends "admin/index.html" %}#}
+{#{% block body %}#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Add Notification | Admin Panel</title>#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">#}
+{#  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">#}
+{#  <style>#}
+{#    :root {#}
+{#      --primary-color: #4f46e5;#}
+{#      --secondary-color: #7c3aed;#}
+{#      --accent-color: #06b6d4;#}
+{#      --card-bg: #ffffff;#}
+{#      --text-dark: #1e293b;#}
+{#      --text-light: #64748b;#}
+{#      --border-color: #e2e8f0;#}
+{#      --success-color: #10b981;#}
+{#      --warning-color: #f59e0b;#}
+{#    }#}
+{##}
+{#    body {#}
+{#      font-family: 'Inter', sans-serif;#}
+{#      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);#}
+{#      min-height: 100vh;#}
+{#      padding: 20px;#}
+{#    }#}
+{##}
+{#    .notification-container {#}
+{#      max-width: 800px;#}
+{#      margin: 2rem auto;#}
+{#      animation: fadeIn 0.5s ease-out;#}
+{#    }#}
+{##}
+{#    @keyframes fadeIn {#}
+{#      from { opacity: 0; transform: translateY(20px); }#}
+{#      to { opacity: 1; transform: translateY(0); }#}
+{#    }#}
+{##}
+{#    .notification-header {#}
+{#      text-align: center;#}
+{#      margin-bottom: 2.5rem;#}
+{#      position: relative;#}
+{#    }#}
+{##}
+{#    .notification-header h2 {#}
+{#      font-family: 'Poppins', sans-serif;#}
+{#      font-weight: 700;#}
+{#      color: var(--text-dark);#}
+{#      font-size: 2.2rem;#}
+{#      margin-bottom: 0.5rem;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      gap: 12px;#}
+{#    }#}
+{##}
+{#    .notification-header h2 i {#}
+{#      color: var(--primary-color);#}
+{#      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));#}
+{#      -webkit-background-clip: text;#}
+{#      -webkit-text-fill-color: transparent;#}
+{#    }#}
+{##}
+{#    .notification-subtitle {#}
+{#      color: var(--text-light);#}
+{#      font-size: 1rem;#}
+{#      max-width: 600px;#}
+{#      margin: 0 auto;#}
+{#      line-height: 1.6;#}
+{#    }#}
+{##}
+{#    .notification-card {#}
+{#      background: var(--card-bg);#}
+{#      border-radius: 20px;#}
+{#      padding: 2.5rem;#}
+{#      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),#}
+{#                  0 2px 10px rgba(0, 0, 0, 0.03);#}
+{#      border: 1px solid var(--border-color);#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#    }#}
+{##}
+{#    .notification-card::before {#}
+{#      content: '';#}
+{#      position: absolute;#}
+{#      top: 0;#}
+{#      left: 0;#}
+{#      right: 0;#}
+{#      height: 5px;#}
+{#      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));#}
+{#      border-radius: 20px 20px 0 0;#}
+{#    }#}
+{##}
+{#    .form-label {#}
+{#      font-weight: 600;#}
+{#      color: var(--text-dark);#}
+{#      margin-bottom: 0.75rem;#}
+{#      font-size: 1.05rem;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      gap: 10px;#}
+{#    }#}
+{##}
+{#    .form-label i {#}
+{#      color: var(--primary-color);#}
+{#    }#}
+{##}
+{#    .input-group-custom {#}
+{#      position: relative;#}
+{#      margin-bottom: 1.5rem;#}
+{#    }#}
+{##}
+{#    .form-control {#}
+{#      background: #f8fafc;#}
+{#      border: 2px solid var(--border-color);#}
+{#      border-radius: 12px;#}
+{#      color: var(--text-dark);#}
+{#      padding: 0.875rem 1.25rem;#}
+{#      font-size: 1rem;#}
+{#      transition: all 0.3s ease;#}
+{#      font-family: 'Inter', sans-serif;#}
+{#      line-height: 1.5;#}
+{#    }#}
+{##}
+{#    .form-control:focus {#}
+{#      background: white;#}
+{#      border-color: var(--primary-color);#}
+{#      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);#}
+{#      outline: none;#}
+{#    }#}
+{##}
+{#    .character-count {#}
+{#      text-align: right;#}
+{#      font-size: 0.85rem;#}
+{#      color: var(--text-light);#}
+{#      margin-top: 0.5rem;#}
+{#    }#}
+{##}
+{#    .character-count.warning {#}
+{#      color: var(--warning-color);#}
+{#    }#}
+{##}
+{#    .character-count.error {#}
+{#      color: #ef4444;#}
+{#    }#}
+{##}
+{#    .notification-type {#}
+{#      margin-bottom: 2rem;#}
+{#    }#}
+{##}
+{#    .type-options {#}
+{#      display: flex;#}
+{#      gap: 15px;#}
+{#      flex-wrap: wrap;#}
+{#      margin-top: 0.5rem;#}
+{#    }#}
+{##}
+{#    .type-option {#}
+{#      flex: 1;#}
+{#      min-width: 120px;#}
+{#    }#}
+{##}
+{#    .type-option input[type="radio"] {#}
+{#      display: none;#}
+{#    }#}
+{##}
+{#    .type-option label {#}
+{#      display: flex;#}
+{#      flex-direction: column;#}
+{#      align-items: center;#}
+{#      padding: 1rem;#}
+{#      background: #f8fafc;#}
+{#      border: 2px solid var(--border-color);#}
+{#      border-radius: 12px;#}
+{#      cursor: pointer;#}
+{#      transition: all 0.3s ease;#}
+{#      text-align: center;#}
+{#    }#}
+{##}
+{#    .type-option input[type="radio"]:checked + label {#}
+{#      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(124, 58, 237, 0.1));#}
+{#      border-color: var(--primary-color);#}
+{#      color: var(--primary-color);#}
+{#    }#}
+{##}
+{#    .type-option label i {#}
+{#      font-size: 1.5rem;#}
+{#      margin-bottom: 0.5rem;#}
+{#    }#}
+{##}
+{#    .type-option label .type-name {#}
+{#      font-weight: 500;#}
+{#      font-size: 0.9rem;#}
+{#    }#}
+{##}
+{#    .btn-submit {#}
+{#      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));#}
+{#      color: white;#}
+{#      border: none;#}
+{#      border-radius: 12px;#}
+{#      padding: 0.875rem 2.5rem;#}
+{#      font-weight: 600;#}
+{#      font-size: 1rem;#}
+{#      transition: all 0.3s ease;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      gap: 10px;#}
+{#      width: 100%;#}
+{#      margin-top: 1.5rem;#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#    }#}
+{##}
+{#    .btn-submit:hover {#}
+{#      transform: translateY(-2px);#}
+{#      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);#}
+{#    }#}
+{##}
+{#    .btn-submit:active {#}
+{#      transform: translateY(0);#}
+{#    }#}
+{##}
+{#    .btn-submit::after {#}
+{#      content: '';#}
+{#      position: absolute;#}
+{#      top: 0;#}
+{#      left: -100%;#}
+{#      width: 100%;#}
+{#      height: 100%;#}
+{#      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);#}
+{#      transition: left 0.7s;#}
+{#    }#}
+{##}
+{#    .btn-submit:hover::after {#}
+{#      left: 100%;#}
+{#    }#}
+{##}
+{#    .notification-preview {#}
+{#      background: #f8fafc;#}
+{#      border-radius: 12px;#}
+{#      padding: 1.5rem;#}
+{#      margin-top: 2rem;#}
+{#      border-left: 4px solid var(--primary-color);#}
+{#    }#}
+{##}
+{#    .preview-header {#}
+{#      display: flex;#}
+{#      justify-content: space-between;#}
+{#      align-items: center;#}
+{#      margin-bottom: 1rem;#}
+{#    }#}
+{##}
+{#    .preview-title {#}
+{#      font-weight: 600;#}
+{#      color: var(--text-dark);#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      gap: 8px;#}
+{#    }#}
+{##}
+{#    .preview-time {#}
+{#      font-size: 0.85rem;#}
+{#      color: var(--text-light);#}
+{#    }#}
+{##}
+{#    .preview-content {#}
+{#      color: var(--text-dark);#}
+{#      line-height: 1.6;#}
+{#    }#}
+{##}
+{#    .empty-preview {#}
+{#      color: var(--text-light);#}
+{#      text-align: center;#}
+{#      padding: 2rem;#}
+{#      font-style: italic;#}
+{#    }#}
+{##}
+{#    /* Responsive adjustments */#}
+{#    @media (max-width: 768px) {#}
+{#      .notification-container {#}
+{#        margin: 1rem auto;#}
+{#        padding: 0 15px;#}
+{#      }#}
+{##}
+{#      .notification-card {#}
+{#        padding: 1.75rem;#}
+{#      }#}
+{##}
+{#      .notification-header h2 {#}
+{#        font-size: 1.8rem;#}
+{#      }#}
+{##}
+{#      .type-options {#}
+{#        flex-direction: column;#}
+{#      }#}
+{##}
+{#      .type-option {#}
+{#        min-width: 100%;#}
+{#      }#}
+{#    }#}
+{##}
+{#    .form-flash {#}
+{#      padding: 1rem;#}
+{#      border-radius: 12px;#}
+{#      margin-bottom: 1.5rem;#}
+{#      display: none;#}
+{#      animation: slideIn 0.3s ease-out;#}
+{#    }#}
+{##}
+{#    @keyframes slideIn {#}
+{#      from { opacity: 0; transform: translateY(-10px); }#}
+{#      to { opacity: 1; transform: translateY(0); }#}
+{#    }#}
+{##}
+{#    .form-flash.success {#}
+{#      background: rgba(16, 185, 129, 0.1);#}
+{#      border: 1px solid rgba(16, 185, 129, 0.2);#}
+{#      color: var(--success-color);#}
+{#    }#}
+{##}
+{#    .form-flash.error {#}
+{#      background: rgba(239, 68, 68, 0.1);#}
+{#      border: 1px solid rgba(239, 68, 68, 0.2);#}
+{#      color: #ef4444;#}
+{#    }#}
+{#  </style>#}
+{#</head>#}
+{#<body>#}
+{#  <div class="notification-container">#}
+{#    <div class="notification-header">#}
+{#      <h2><i class="fas fa-bell"></i> Add New Notification</h2>#}
+{#      <p class="notification-subtitle">Create and send notifications to users. Keep them informed about important updates, announcements, or alerts.</p>#}
+{#    </div>#}
+{##}
+{#    <div class="notification-card">#}
+{#      <!-- Flash messages (for Django/Flask) -->#}
+{#      {% if messages %}#}
+{#        {% for message in messages %}#}
+{#          <div class="form-flash {% if message.tags %}{{ message.tags }}{% endif %}">#}
+{#            <i class="fas {% if 'success' in message.tags %}fa-check-circle{% else %}fa-exclamation-circle{% endif %} me-2"></i>#}
+{#            {{ message }}#}
+{#          </div>#}
+{#        {% endfor %}#}
+{#      {% endif %}#}
+{##}
+{#      <form action="/adm_send_notification_post" method="post">#}
+{#        {% csrf_token %} <!-- Add this for Django, for Flask use appropriate CSRF protection -->#}
+{##}
+{#        <!-- Notification Content -->#}
+{#        <div class="form-group">#}
+{#          <label class="form-label" for="notification">#}
+{#            <i class="fas fa-comment-alt"></i> Notification Message#}
+{#          </label>#}
+{#          <div class="input-group-custom">#}
+{#            <textarea#}
+{#              class="form-control"#}
+{#              id="notification"#}
+{#              name="notification"#}
+{#              rows="4"#}
+{#              placeholder="Enter your notification message here..."#}
+{#              required#}
+{#              maxlength="500"#}
+{#            ></textarea>#}
+{#            <div class="character-count" id="charCount">0/500 characters</div>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        <!-- Preview Section -->#}
+{#        <div class="notification-preview">#}
+{#          <div class="preview-header">#}
+{#            <div class="preview-title">#}
+{#              <i class="fas fa-eye me-1"></i> Live Preview#}
+{#            </div>#}
+{#            <div class="preview-time" id="previewTime">Now</div>#}
+{#          </div>#}
+{#          <div class="preview-content" id="notificationPreview">#}
+{#            <div class="empty-preview">Start typing to see a preview of your notification...</div>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        <button type="submit" class="btn-submit">#}
+{#          <i class="fas fa-paper-plane"></i> Send Notification#}
+{#        </button>#}
+{#      </form>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{#  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+{#  <script>#}
+{#    document.addEventListener('DOMContentLoaded', function() {#}
+{#      const notificationInput = document.getElementById('notification');#}
+{#      const charCount = document.getElementById('charCount');#}
+{#      const notificationPreview = document.getElementById('notificationPreview');#}
+{#      const previewTime = document.getElementById('previewTime');#}
+{#      const typeRadios = document.querySelectorAll('input[name="notification_type"]');#}
+{##}
+{#      // Character count and live preview#}
+{#      notificationInput.addEventListener('input', function() {#}
+{#        const text = this.value;#}
+{#        const length = text.length;#}
+{#        const maxLength = 500;#}
+{##}
+{#        // Update character count#}
+{#        charCount.textContent = `${length}/${maxLength} characters`;#}
+{##}
+{#        // Update character count color#}
+{#        if (length > maxLength * 0.9) {#}
+{#          charCount.classList.add('error');#}
+{#          charCount.classList.remove('warning');#}
+{#        } else if (length > maxLength * 0.7) {#}
+{#          charCount.classList.add('warning');#}
+{#          charCount.classList.remove('error');#}
+{#        } else {#}
+{#          charCount.classList.remove('warning', 'error');#}
+{#        }#}
+{##}
+{#        // Update preview#}
+{#        if (text.trim() === '') {#}
+{#          notificationPreview.innerHTML = '<div class="empty-preview">Start typing to see a preview of your notification...</div>';#}
+{#        } else {#}
+{#          // Get selected notification type#}
+{#          let selectedType = 'info';#}
+{#          typeRadios.forEach(radio => {#}
+{#            if (radio.checked) selectedType = radio.value;#}
+{#          });#}
+{##}
+{#          // Create appropriate icon based on type#}
+{#          let icon, color;#}
+{#          switch(selectedType) {#}
+{#            case 'warning':#}
+{#              icon = 'fa-exclamation-triangle';#}
+{#              color = '#f59e0b';#}
+{#              break;#}
+{#            case 'success':#}
+{#              icon = 'fa-check-circle';#}
+{#              color = '#10b981';#}
+{#              break;#}
+{#            case 'urgent':#}
+{#              icon = 'fa-bullhorn';#}
+{#              color = '#ef4444';#}
+{#              break;#}
+{#            default:#}
+{#              icon = 'fa-info-circle';#}
+{#              color = '#3b82f6';#}
+{#          }#}
+{##}
+{#          notificationPreview.innerHTML = `#}
+{#            <div style="display: flex; gap: 12px; align-items: flex-start;">#}
+{#              <i class="fas ${icon}" style="color: ${color}; font-size: 1.2rem; margin-top: 2px;"></i>#}
+{#              <div>#}
+{#                <p style="margin: 0; color: #1e293b;">${text}</p>#}
+{#                <small style="color: #64748b; margin-top: 8px; display: block;">#}
+{#                  <i class="fas fa-clock me-1"></i> Just now#}
+{#                </small>#}
+{#              </div>#}
+{#            </div>#}
+{#          `;#}
+{#        }#}
+{#      });#}
+{##}
+{#      // Update preview when notification type changes#}
+{#      typeRadios.forEach(radio => {#}
+{#        radio.addEventListener('change', function() {#}
+{#          // Trigger input event to update preview#}
+{#          notificationInput.dispatchEvent(new Event('input'));#}
+{#        });#}
+{#      });#}
+{##}
+{#      // Set current time for preview#}
+{#      function updatePreviewTime() {#}
+{#        const now = new Date();#}
+{#        const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});#}
+{#        previewTime.textContent = timeString;#}
+{#      }#}
+{##}
+{#      updatePreviewTime();#}
+{#      setInterval(updatePreviewTime, 60000); // Update every minute#}
+{##}
+{#      // Form submission enhancement#}
+{##}
+{#      function showFlashMessage(message, type) {#}
+{#        // Create flash message element#}
+{#        const flashDiv = document.createElement('div');#}
+{#        flashDiv.className = `form-flash ${type}`;#}
+{#        flashDiv.innerHTML = `#}
+{#          <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} me-2"></i>#}
+{#          ${message}#}
+{#        `;#}
+{##}
+{#        // Insert at top of form#}
+{#        const card = document.querySelector('.notification-card');#}
+{#        const existingFlash = card.querySelector('.form-flash');#}
+{#        if (existingFlash) {#}
+{#          existingFlash.remove();#}
+{#        }#}
+{#        card.insertBefore(flashDiv, card.firstChild);#}
+{##}
+{#        // Remove after 5 seconds#}
+{#        setTimeout(() => {#}
+{#          flashDiv.remove();#}
+{#        }, 5000);#}
+{#      }#}
+{##}
+{#      // Auto-focus on notification input#}
+{#      notificationInput.focus();#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+
+
+
+
+{#{% extends "admin/index.html" %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#  <title>Add Notification | Admin Panel</title>#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">#}
+{#  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">#}
+{#  <style>#}
+{#    :root {#}
+{#      --primary-gradient: linear-gradient(135deg, #0f172a, #1e2a47, #0a3d62);#}
+{#      --card-bg: rgba(255, 255, 255, 0.12);#}
+{#      --card-border: rgba(255, 255, 255, 0.15);#}
+{#      --text-light: #f1f5f9;#}
+{#      --text-muted: #94a3b8;#}
+{#      --accent-blue: #3b82f6;#}
+{#      --accent-teal: #06b6d4;#}
+{#      --success: #10b981;#}
+{#      --error: #ef4444;#}
+{#      --warning: #f59e0b;#}
+{#    }#}
+{##}
+{#    * {#}
+{#      margin: 0;#}
+{#      padding: 0;#}
+{#      box-sizing: border-box;#}
+{#    }#}
+{##}
+{#    body {#}
+{#      font-family: 'Poppins', sans-serif;#}
+{#      background: var(--primary-gradient);#}
+{#      min-height: 100vh;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      padding: 20px;#}
+{#      color: var(--text-light);#}
+{#    }#}
+{##}
+{#    .horizontal-card-container {#}
+{#      width: 100%;#}
+{#      max-width: 1100px;#}
+{#      animation: fadeIn 0.6s ease-out;#}
+{#    }#}
+{##}
+{#    @keyframes fadeIn {#}
+{#      from { opacity: 0; transform: translateY(20px); }#}
+{#      to { opacity: 1; transform: translateY(0); }#}
+{#    }#}
+{##}
+{#    .horizontal-card {#}
+{#      display: flex;#}
+{#      flex-direction: row;#}
+{#      background: var(--card-bg);#}
+{#      backdrop-filter: blur(15px);#}
+{#      -webkit-backdrop-filter: blur(15px);#}
+{#      border: 1px solid var(--card-border);#}
+{#      border-radius: 24px;#}
+{#      overflow: hidden;#}
+{#      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4),#}
+{#                  inset 0 1px 0 rgba(255, 255, 255, 0.1);#}
+{#      min-height: 620px;#}
+{#    }#}
+{##}
+{#    /* Left Side - Visual Section */#}
+{#    .card-visual {#}
+{#      flex: 0 0 45%;#}
+{#      background: linear-gradient(145deg, rgba(30, 42, 71, 0.8), rgba(15, 23, 42, 0.9));#}
+{#      padding: 3rem 2.5rem;#}
+{#      display: flex;#}
+{#      flex-direction: column;#}
+{#      justify-content: center;#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#    }#}
+{##}
+{#    .card-visual::before {#}
+{#      content: '';#}
+{#      position: absolute;#}
+{#      top: 0;#}
+{#      left: 0;#}
+{#      right: 0;#}
+{#      height: 5px;#}
+{#      background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal));#}
+{#    }#}
+{##}
+{#    .visual-header {#}
+{#      text-align: center;#}
+{#      margin-bottom: 2.5rem;#}
+{#      position: relative;#}
+{#      z-index: 2;#}
+{#    }#}
+{##}
+{#    .notification-icon {#}
+{#      width: 90px;#}
+{#      height: 90px;#}
+{#      background: linear-gradient(145deg, var(--accent-blue), var(--accent-teal));#}
+{#      border-radius: 50%;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      margin: 0 auto 1.5rem;#}
+{#      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);#}
+{#      animation: float 6s ease-in-out infinite;#}
+{#    }#}
+{##}
+{#    @keyframes float {#}
+{#      0%, 100% { transform: translateY(0); }#}
+{#      50% { transform: translateY(-10px); }#}
+{#    }#}
+{##}
+{#    .notification-icon i {#}
+{#      font-size: 38px;#}
+{#      color: white;#}
+{#    }#}
+{##}
+{#    .visual-title {#}
+{#      font-size: 2.2rem;#}
+{#      font-weight: 700;#}
+{#      margin-bottom: 0.5rem;#}
+{#      background: linear-gradient(to right, #fff, #cbd5e1);#}
+{#      -webkit-background-clip: text;#}
+{#      -webkit-text-fill-color: transparent;#}
+{#    }#}
+{##}
+{#    .visual-subtitle {#}
+{#      color: var(--text-muted);#}
+{#      font-size: 1rem;#}
+{#      font-weight: 400;#}
+{#      line-height: 1.6;#}
+{#      margin-bottom: 2rem;#}
+{#    }#}
+{##}
+{#    .notification-tips {#}
+{#      background: rgba(255, 255, 255, 0.05);#}
+{#      border-radius: 16px;#}
+{#      padding: 1.5rem;#}
+{#      margin-top: 2rem;#}
+{#      border-left: 4px solid var(--accent-teal);#}
+{#    }#}
+{##}
+{#    .notification-tips h5 {#}
+{#      font-size: 1.1rem;#}
+{#      margin-bottom: 1rem;#}
+{#      color: white;#}
+{#      font-weight: 600;#}
+{#    }#}
+{##}
+{#    .tips-list {#}
+{#      list-style: none;#}
+{#      padding: 0;#}
+{#    }#}
+{##}
+{#    .tips-list li {#}
+{#      margin-bottom: 0.75rem;#}
+{#      font-size: 0.9rem;#}
+{#      color: var(--text-muted);#}
+{#      display: flex;#}
+{#      align-items: flex-start;#}
+{#    }#}
+{##}
+{#    .tips-list li i {#}
+{#      color: var(--accent-teal);#}
+{#      margin-right: 10px;#}
+{#      margin-top: 3px;#}
+{#      font-size: 0.8rem;#}
+{#    }#}
+{##}
+{#    /* Right Side - Form Section */#}
+{#    .card-form {#}
+{#      flex: 0 0 55%;#}
+{#      padding: 3rem 3rem;#}
+{#      display: flex;#}
+{#      flex-direction: column;#}
+{#      justify-content: center;#}
+{#    }#}
+{##}
+{#    .form-header {#}
+{#      margin-bottom: 2rem;#}
+{#    }#}
+{##}
+{#    .form-header h2 {#}
+{#      font-size: 1.8rem;#}
+{#      font-weight: 700;#}
+{#      margin-bottom: 0.5rem;#}
+{#      color: white;#}
+{#    }#}
+{##}
+{#    .form-header p {#}
+{#      color: var(--text-muted);#}
+{#      font-size: 0.95rem;#}
+{#    }#}
+{##}
+{#    .form-group {#}
+{#      margin-bottom: 1.5rem;#}
+{#    }#}
+{##}
+{#    .form-label {#}
+{#      display: block;#}
+{#      font-weight: 500;#}
+{#      margin-bottom: 0.75rem;#}
+{#      color: #e2e8f0;#}
+{#      font-size: 0.95rem;#}
+{#    }#}
+{##}
+{#    .input-container {#}
+{#      position: relative;#}
+{#    }#}
+{##}
+{#    .form-control {#}
+{#      width: 100%;#}
+{#      background: rgba(15, 23, 42, 0.6);#}
+{#      border: 1px solid rgba(255, 255, 255, 0.1);#}
+{#      border-radius: 12px;#}
+{#      color: white;#}
+{#      padding: 0.875rem 1rem;#}
+{#      font-size: 1rem;#}
+{#      transition: all 0.3s ease;#}
+{#      font-family: 'Poppins', sans-serif;#}
+{#      resize: vertical;#}
+{#    }#}
+{##}
+{#    .form-control:focus {#}
+{#      background: rgba(15, 23, 42, 0.8);#}
+{#      border-color: var(--accent-blue);#}
+{#      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);#}
+{#      outline: none;#}
+{#      color: white;#}
+{#    }#}
+{##}
+{#    .form-control::placeholder {#}
+{#      color: var(--text-muted);#}
+{#    }#}
+{##}
+{#    .character-count {#}
+{#      text-align: right;#}
+{#      font-size: 0.85rem;#}
+{#      color: var(--text-muted);#}
+{#      margin-top: 0.5rem;#}
+{#    }#}
+{##}
+{#    .character-count.warning {#}
+{#      color: var(--warning);#}
+{#    }#}
+{##}
+{#    .character-count.error {#}
+{#      color: var(--error);#}
+{#    }#}
+{##}
+{#    /* Live Preview Section */#}
+{#    .notification-preview {#}
+{#      background: rgba(255, 255, 255, 0.05);#}
+{#      border-radius: 12px;#}
+{#      padding: 1.25rem;#}
+{#      margin-top: 1.5rem;#}
+{#      border-left: 4px solid var(--accent-blue);#}
+{#    }#}
+{##}
+{#    .preview-header {#}
+{#      display: flex;#}
+{#      justify-content: space-between;#}
+{#      align-items: center;#}
+{#      margin-bottom: 1rem;#}
+{#    }#}
+{##}
+{#    .preview-title {#}
+{#      font-weight: 600;#}
+{#      color: white;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      gap: 8px;#}
+{#      font-size: 0.95rem;#}
+{#    }#}
+{##}
+{#    .preview-title i {#}
+{#      color: var(--accent-teal);#}
+{#    }#}
+{##}
+{#    .preview-time {#}
+{#      font-size: 0.85rem;#}
+{#      color: var(--text-muted);#}
+{#    }#}
+{##}
+{#    .preview-content {#}
+{#      color: var(--text-light);#}
+{#      line-height: 1.6;#}
+{#    }#}
+{##}
+{#    .empty-preview {#}
+{#      color: var(--text-muted);#}
+{#      text-align: center;#}
+{#      padding: 1.5rem;#}
+{#      font-style: italic;#}
+{#      font-size: 0.9rem;#}
+{#    }#}
+{##}
+{#    .btn-submit {#}
+{#      background: linear-gradient(135deg, var(--accent-blue), #2563eb);#}
+{#      color: white;#}
+{#      border: none;#}
+{#      border-radius: 12px;#}
+{#      padding: 1rem 2.5rem;#}
+{#      font-weight: 600;#}
+{#      font-size: 1rem;#}
+{#      cursor: pointer;#}
+{#      transition: all 0.3s ease;#}
+{#      width: 100%;#}
+{#      margin-top: 1.5rem;#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      gap: 10px;#}
+{#    }#}
+{##}
+{#    .btn-submit:hover {#}
+{#      transform: translateY(-2px);#}
+{#      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);#}
+{#    }#}
+{##}
+{#    .btn-submit:active {#}
+{#      transform: translateY(0);#}
+{#    }#}
+{##}
+{#    .btn-submit::after {#}
+{#      content: '';#}
+{#      position: absolute;#}
+{#      top: 0;#}
+{#      left: -100%;#}
+{#      width: 100%;#}
+{#      height: 100%;#}
+{#      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);#}
+{#      transition: left 0.7s;#}
+{#    }#}
+{##}
+{#    .btn-submit:hover::after {#}
+{#      left: 100%;#}
+{#    }#}
+{##}
+{#    .form-footer {#}
+{#      margin-top: 2rem;#}
+{#      text-align: center;#}
+{#      font-size: 0.9rem;#}
+{#      color: var(--text-muted);#}
+{#    }#}
+{##}
+{#    .form-footer a {#}
+{#      color: var(--accent-teal);#}
+{#      text-decoration: none;#}
+{#      transition: color 0.2s;#}
+{#    }#}
+{##}
+{#    .form-footer a:hover {#}
+{#      color: white;#}
+{#      text-decoration: underline;#}
+{#    }#}
+{##}
+{#    /* Alert Styling */#}
+{#    .alert {#}
+{#      padding: 1rem;#}
+{#      border-radius: 12px;#}
+{#      margin-bottom: 1.5rem;#}
+{#      animation: slideIn 0.3s ease-out;#}
+{#    }#}
+{##}
+{#    @keyframes slideIn {#}
+{#      from { opacity: 0; transform: translateX(-10px); }#}
+{#      to { opacity: 1; transform: translateX(0); }#}
+{#    }#}
+{##}
+{#    .alert-success {#}
+{#      background: rgba(16, 185, 129, 0.15);#}
+{#      border: 1px solid rgba(16, 185, 129, 0.3);#}
+{#      color: #a7f3d0;#}
+{#    }#}
+{##}
+{#    .alert-error {#}
+{#      background: rgba(239, 68, 68, 0.15);#}
+{#      border: 1px solid rgba(239, 68, 68, 0.3);#}
+{#      color: #fca5a5;#}
+{#    }#}
+{##}
+{#    .form-flash {#}
+{#      padding: 1rem;#}
+{#      border-radius: 12px;#}
+{#      margin-bottom: 1.5rem;#}
+{#      animation: slideIn 0.3s ease-out;#}
+{#    }#}
+{##}
+{#    .form-flash.success {#}
+{#      background: rgba(16, 185, 129, 0.15);#}
+{#      border: 1px solid rgba(16, 185, 129, 0.3);#}
+{#      color: #a7f3d0;#}
+{#    }#}
+{##}
+{#    .form-flash.error {#}
+{#      background: rgba(239, 68, 68, 0.15);#}
+{#      border: 1px solid rgba(239, 68, 68, 0.3);#}
+{#      color: #fca5a5;#}
+{#    }#}
+{##}
+{#    /* Responsive Design */#}
+{#    @media (max-width: 992px) {#}
+{#      .horizontal-card {#}
+{#        flex-direction: column;#}
+{#        min-height: auto;#}
+{#      }#}
+{##}
+{#      .card-visual, .card-form {#}
+{#        flex: 0 0 100%;#}
+{#      }#}
+{##}
+{#      .card-visual {#}
+{#        padding: 2.5rem 2rem;#}
+{#      }#}
+{##}
+{#      .card-form {#}
+{#        padding: 2.5rem 2rem;#}
+{#      }#}
+{#    }#}
+{##}
+{#    @media (max-width: 576px) {#}
+{#      .horizontal-card-container {#}
+{#        padding: 10px;#}
+{#      }#}
+{##}
+{#      .card-visual, .card-form {#}
+{#        padding: 2rem 1.5rem;#}
+{#      }#}
+{##}
+{#      .visual-title {#}
+{#        font-size: 1.8rem;#}
+{#      }#}
+{##}
+{#      .notification-icon {#}
+{#        width: 70px;#}
+{#        height: 70px;#}
+{#      }#}
+{##}
+{#      .notification-icon i {#}
+{#        font-size: 28px;#}
+{#      }#}
+{##}
+{#      .form-header h2 {#}
+{#        font-size: 1.5rem;#}
+{#      }#}
+{#    }#}
+{#  </style>#}
+{#</head>#}
+{#<body>#}
+{#  <div class="horizontal-card-container">#}
+{#    <div class="horizontal-card">#}
+{#      <!-- Left Side - Visual Section -->#}
+{#      <div class="card-visual">#}
+{#        <div class="visual-header">#}
+{#          <div class="notification-icon">#}
+{#            <i class="fas fa-bell"></i>#}
+{#          </div>#}
+{#          <h1 class="visual-title">Send Notifications</h1>#}
+{#          <p class="visual-subtitle">Keep your users informed with timely updates, announcements, and important alerts.</p>#}
+{#        </div>#}
+{##}
+{#        <div class="notification-tips">#}
+{#          <h5><i class="fas fa-lightbulb me-2"></i>Notification Best Practices</h5>#}
+{#          <ul class="tips-list">#}
+{#            <li><i class="fas fa-check-circle"></i> Keep messages clear, concise, and actionable</li>#}
+{#            <li><i class="fas fa-check-circle"></i> Use appropriate urgency levels for different messages</li>#}
+{#            <li><i class="fas fa-check-circle"></i> Avoid sending too many notifications at once</li>#}
+{#            <li><i class="fas fa-check-circle"></i> Include relevant details but avoid information overload</li>#}
+{#            <li><i class="fas fa-check-circle"></i> Test your message before sending to all users</li>#}
+{#          </ul>#}
+{#        </div>#}
+{##}
+{#        <div class="mt-4 text-center">#}
+{#          <p style="font-size: 0.85rem; color: #64748b;">#}
+{#            <i class="fas fa-users me-1"></i>#}
+{#            Notifications will be sent to all active users#}
+{#          </p>#}
+{#        </div>#}
+{#      </div>#}
+{##}
+{#      <!-- Right Side - Form Section -->#}
+{#      <div class="card-form">#}
+{#        <!-- Flash messages (for Django/Flask) -->#}
+{#        {% if messages %}#}
+{#          {% for message in messages %}#}
+{#            <div class="form-flash {% if message.tags %}{{ message.tags }}{% endif %}">#}
+{#              <i class="fas {% if 'success' in message.tags %}fa-check-circle{% else %}fa-exclamation-circle{% endif %} me-2"></i>#}
+{#              {{ message }}#}
+{#            </div>#}
+{#          {% endfor %}#}
+{#        {% endif %}#}
+{##}
+{#        <div class="form-header">#}
+{#          <h2>Add New Notification</h2>#}
+{#          <p>Compose your message and preview it before sending</p>#}
+{#        </div>#}
+{##}
+{#        <form action="/adm_send_notification_post" method="post">#}
+{#          {% csrf_token %}#}
+{##}
+{#          <!-- Notification Content -->#}
+{#          <div class="form-group">#}
+{#            <label class="form-label">#}
+{#              <i class="fas fa-comment-alt me-2"></i>Notification Message#}
+{#            </label>#}
+{#            <div class="input-contax\9iner">#}
+{#              <textarea#}
+{#                class="form-control"#}
+{#                id="notification"#}
+{#                name="notification"#}
+{#                rows="4"#}
+{#                placeholder="Enter your notification message here..."#}
+{#                required#}
+{#                maxlength="500"#}
+{#              ></textarea>#}
+{#              <div class="character-count" id="charCount">0/500 characters</div>#}
+{#            </div>#}
+{#          </div>#}
+{##}
+{#          <!-- Preview Section -->#}
+{#          <div class="notification-preview">#}
+{#            <div class="preview-header">#}
+{#              <div class="preview-title">#}
+{#                <i class="fas fa-eye"></i> Live Preview#}
+{#              </div>#}
+{#              <div class="preview-time" id="previewTime">Now</div>#}
+{#            </div>#}
+{#            <div class="preview-content" id="notificationPreview">#}
+{#              <div class="empty-preview">Start typing to see a preview of your notification...</div>#}
+{#            </div>#}
+{#          </div>#}
+{##}
+{#          <button type="submit" class="btn-submit">#}
+{#            <i class="fas fa-paper-plane"></i> Send Notification#}
+{#          </button>#}
+{##}
+{#          <div class="form-footer">#}
+{#            <p>#}
+{#              <i class="fas fa-arrow-left me-1"></i>#}
+{#              <a href="/adm_home">Return to dashboard</a>#}
+{#            </p>#}
+{#          </div>#}
+{#        </form>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{#  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+{#  <script>#}
+{#    document.addEventListener('DOMContentLoaded', function() {#}
+{#      const notificationInput = document.getElementById('notification');#}
+{#      const charCount = document.getElementById('charCount');#}
+{#      const notificationPreview = document.getElementById('notificationPreview');#}
+{#      const previewTime = document.getElementById('previewTime');#}
+{##}
+{#      // Character count and live preview#}
+{#      notificationInput.addEventListener('input', function() {#}
+{#        const text = this.value;#}
+{#        const length = text.length;#}
+{#        const maxLength = 500;#}
+{##}
+{#        // Update character count#}
+{#        charCount.textContent = `${length}/${maxLength} characters`;#}
+{##}
+{#        // Update character count color#}
+{#        if (length > maxLength * 0.9) {#}
+{#          charCount.classList.add('error');#}
+{#          charCount.classList.remove('warning');#}
+{#        } else if (length > maxLength * 0.7) {#}
+{#          charCount.classList.add('warning');#}
+{#          charCount.classList.remove('error');#}
+{#        } else {#}
+{#          charCount.classList.remove('warning', 'error');#}
+{#        }#}
+{##}
+{#        // Update preview#}
+{#        if (text.trim() === '') {#}
+{#          notificationPreview.innerHTML = '<div class="empty-preview">Start typing to see a preview of your notification...</div>';#}
+{#        } else {#}
+{#          notificationPreview.innerHTML = `#}
+{#            <div style="display: flex; gap: 12px; align-items: flex-start;">#}
+{#              <i class="fas fa-bell" style="color: #06b6d4; font-size: 1.2rem; margin-top: 2px;"></i>#}
+{#              <div>#}
+{#                <p style="margin: 0; color: #f1f5f9; line-height: 1.6;">${text}</p>#}
+{#                <small style="color: #94a3b8; margin-top: 8px; display: block;">#}
+{#                  <i class="fas fa-clock me-1"></i> Just now#}
+{#                </small>#}
+{#              </div>#}
+{#            </div>#}
+{#          `;#}
+{#        }#}
+{#      });#}
+{##}
+{#      // Set current time for preview#}
+{#      function updatePreviewTime() {#}
+{#        const now = new Date();#}
+{#        const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});#}
+{#        previewTime.textContent = timeString;#}
+{#      }#}
+{##}
+{#      updatePreviewTime();#}
+{#      setInterval(updatePreviewTime, 60000);#}
+{##}
+{#      // Auto-focus on notification input#}
+{#      notificationInput.focus();#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDI AI | Send Notification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1B3C53;
+            --primary: #234C6A;
+            --primary-light: #456882;
+            --accent: #E3E3E3;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;  /* No scrolling */
+            position: fixed;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 30%, var(--primary-light) 100%);
+        }
+
+        /* Preloader with notification bell */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--primary-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+        .preloader-circle {
+            width: 80px;
+            height: 80px;
+            border: 4px solid transparent;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .preloader-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preloader-img {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--accent);
+            animation: pulse 1s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Navigation dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(27,60,83,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 100;
+            overflow: hidden;
+        }
+        .nav-dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .submenu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-dark);
+            transition: all 0.3s;
+        }
+        .submenu a:hover {
+            background: var(--accent);
+            padding-left: 25px;
+        }
+
+        /* Nav link underline animation */
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(27,60,83,0.4); }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 50;
+            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu.hidden { display: none; }
+
+        /* Header styles */
+        #header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 80px;
+            position: fixed;
+            width: 100%;
+            z-index: 50;
+            top: 0;
+        }
+
+        #header .container {
+            height: 80px;
+        }
+
+        /* Main content - full height with header offset */
+        main {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background particles */
+        .background-particles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .particle-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -150px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* SMALLER Notification card - reduced size */
+        .notification-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(27,60,83,0.3);
+            padding: 1.75rem;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* SMALLER icon */
+        .form-title-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 20px -8px var(--primary-dark);
+        }
+
+        .form-title-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* SMALLER title */
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            color: var(--primary-light);
+        }
+
+        /* SMALLER form inputs */
+        .form-input {
+            width: 100%;
+            background: var(--accent);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 0.85rem 1.25rem;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 10px 30px -15px rgba(35,76,106,0.2);
+        }
+
+        .alert-message {
+            background: var(--accent);
+            border-radius: 20px;
+            padding: 0.85rem 1.25rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-left: 5px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .alert-message.success { border-left-color: #10b981; }
+        .alert-message.error { border-left-color: #ef4444; }
+
+        .char-count {
+            text-align: right;
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
+            color: var(--primary-light);
+        }
+
+        /* SMALLER action buttons */
+        .action-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* SMALLER quick info */
+        .quick-info {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 2px solid var(--accent);
+            text-align: center;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Logo styling from index page */
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: rotate(12deg);
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+    </style>
+</head>
+<body>
+    <!-- Preloader with notification bell icon (matching view notification page) -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img">
+                <i class="fas fa-bell"></i> <!-- Changed from fa-plus to fa-bell -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="background-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+    </div>
+
+    <!-- Header - EXACT header from index page with MEDI AI logo -->
+    <header id="header" class="fixed w-full z-50 bg-white border-b border-gray-200 shadow-md">
+        <div class="container mx-auto px-4 lg:px-6 h-full flex items-center">
+            <div class="flex items-center justify-between w-full">
+                <!-- Logo with MEDI AI image -->
+                <a href="/adm_home" class="flex items-center space-x-3 group">
+                    <img src="{% static 'images/IMG_7705.PNG' %}" alt="MEDI AI Logo" class="w-12 h-12 rounded-full object-cover transform group-hover:rotate-12 transition-transform duration-300">
+                    <span class="text-xl font-bold text-[#1B3C53]">MEDI <span class="text-[#456882]">AI</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-10">
+                    <a href="/adm_home" class="nav-link text-[#1B3C53] font-medium hover:text-[#234C6A]">Home</a>
+                    <a href="/adm_change_password" class="nav-link text-[#1B3C53] font-medium hover:text-[#234C6A]">Change password</a>
+
+                    <!-- Notification Dropdown (Send is active) -->
+                    <div class="nav-dropdown relative">
+                        <a href="javascript:void(0);" class="nav-link text-[#1B3C53] font-medium hover:text-[#234C6A] flex items-center">
+                            Notification <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        </a>
+                        <div class="submenu absolute top-full left-0 min-w-[180px] bg-white rounded-lg shadow-lg opacity-0 invisible transform translate-y-2 transition-all z-50">
+                            <a href="/adm_send_notification" class="block px-5 py-3 text-[#1B3C53] hover:bg-[#E3E3E3] hover:pl-6 transition-all bg-[#E3E3E3]">
+                                <i class="fas fa-paper-plane mr-2 text-[#456882]"></i>Send
+                            </a>
+                            <a href="/adm_viewnotification" class="block px-5 py-3 text-[#1B3C53] hover:bg-[#E3E3E3] hover:pl-6 transition-all">
+                                <i class="fas fa-eye mr-2 text-[#456882]"></i>View
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hospital Dropdown -->
+                     <div class="nav-dropdown">
+                        <a href="javascript:void(0);" class="nav-link text-[#1B3C53] font-medium hover:text-[#234C6A] flex items-center">
+                            Hospitals <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        </a>
+                        <div class="submenu">
+                            <a href="/adm_view_hospital">
+                                <i class="fas fa-hospital-alt mr-2 text-[#456882]"></i>View
+                            </a>
+                            <a href="/adm_edit_hospital">
+                                <i class="fas fa-edit mr-2 text-[#456882]"></i>Manage
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="/adm_viewfeedback" class="nav-link text-[#1B3C53] font-medium hover:text-[#234C6A]">Feedback</a>
+                </nav>
+
+                <!-- Logout Button -->
+                <div class="hidden lg:block">
+                    <a href="/logouts" class="btn-primary">
+                        Logout
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="lg:hidden text-[#1B3C53] text-2xl" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden" id="mobileMenu">
+            <button class="absolute top-6 right-6 text-2xl text-[#1B3C53]" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mt-16 space-y-6">
+                <a href="/adm_home" class="block text-lg text-[#1B3C53] font-medium hover:text-[#456882] transition-colors">Home</a>
+                <a href="/adm_change_password" class="block text-lg text-[#1B3C53] font-medium hover:text-[#456882] transition-colors">Change password</a>
+
+                <div>
+                    <p class="text-lg text-[#1B3C53] font-medium mb-3">Notification</p>
+                    <div class="space-y-2 pl-4">
+                        <a href="/adm_send_notification" class="block text-base text-[#456882] hover:text-[#234C6A] transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>Send
+                        </a>
+                        <a href="/adm_viewnotification" class="block text-base text-[#456882] hover:text-[#234C6A] transition-colors">
+                            <i class="fas fa-eye mr-2"></i>View
+                        </a>
+                    </div>
+                </div>
+
+                <a href="/adm_view_hospital" class="block text-lg text-[#1B3C53] font-medium hover:text-[#456882] transition-colors">Hospitals</a>
+                <a href="/adm_viewfeedback" class="block text-lg text-[#1B3C53] font-medium hover:text-[#456882] transition-colors">Feedback</a>
+                <a href="/logouts" class="btn-primary w-full px-6 py-3 rounded-full text-white font-medium mt-8 block text-center">
+                   Logout
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - Smaller Notification Container -->
+    <main>
+        <div class="container mx-auto px-4">
+            <div class="notification-card fade-in">
+                <!-- Icon -->
+                <div class="form-title-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+
+                <!-- Title -->
+                <h1 class="font-bold text-center">Send Notification</h1>
+                <p class="text-center subtitle">Send important updates to all users</p>
+
+                <!-- Flash Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert-message {% if 'success' in message.tags %}success{% elif 'error' in message.tags %}error{% endif %}">
+                            <i class="fas {% if 'success' in message.tags %}fa-check-circle text-green-600{% else %}fa-exclamation-circle text-red-600{% endif %}"></i>
+                            <span class="text-[#1B3C53]">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Form -->
+                <form action="/adm_send_notification_post" method="post">
+                    {% csrf_token %}
+
+                    <!-- Notification Input -->
+                    <div class="mb-5">
+                        <label class="block text-[#1B3C53] font-medium mb-2 text-sm">
+                            <i class="fas fa-comment-alt mr-2 text-[#234C6A]"></i>
+                            Message
+                        </label>
+                        <textarea
+                            id="notification"
+                            name="notification"
+                            rows="5"
+                            class="form-input"
+                            placeholder="Type your notification message..."
+                            required
+                            maxlength="500"
+                        ></textarea>
+                        <div class="char-count" id="charCount">0/500 characters</div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-end">
+                        <a href="/adm_home" class="px-5 py-2.5 rounded-full border-2 border-[#234C6A] text-[#234C6A] font-medium hover:bg-[#234C6A] hover:text-white transition-all text-center text-sm">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn-primary text-sm">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Notification
+                        </button>
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="quick-info">
+                        <i class="fas fa-users"></i>
+                        <span>This notification will be sent to all active users</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('hidden');
+                }
+            }, 800);
+        });
+
+        // Mobile menu functionality
+        var menuToggle = document.getElementById('menuToggle');
+        var closeMenu = document.getElementById('closeMenu');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && closeMenu && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(function() {
+                    mobileMenu.classList.add('open');
+                }, 10);
+            });
+
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target) && mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
+
+        // FIXED: Disable scrolling but ALLOW space key in inputs
+        // Only prevent default on wheel and touchmove, not on keydown
+        document.body.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.body.addEventListener('wheel', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // REMOVED the keydown event listener that was blocking the space key
+        // Now space key will work normally in all input fields
+
+        // Character count
+        const notificationInput = document.getElementById('notification');
+        const charCount = document.getElementById('charCount');
+
+        if (notificationInput && charCount) {
+            notificationInput.addEventListener('input', function() {
+                const length = this.value.length;
+                const maxLength = 500;
+                charCount.textContent = `${length}/${maxLength} characters`;
+            });
+
+            // Auto-focus
+            notificationInput.focus();
+        }
+    </script>
+</body>
+</html>
