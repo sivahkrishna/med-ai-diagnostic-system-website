@@ -72,3 +72,5 @@ Siva Krishna
 ---
 
 ⭐ This project demonstrates the application of AI in healthcare to enable faster, smarter, and more accessible medical diagnosis.
+
+for application : https://github.com/sivahkrishna/med-ai-diagnostic-system-application
